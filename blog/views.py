@@ -16,5 +16,20 @@ class PostListView(generic.ListView):
 
 class PostCreateView(generic.CreateView):
     template_name = 'blog/post_form.html'
+    model = Post
     form_class = PostCreateForm
+    success_url = reverse_lazy('blog:post_list')
+
+class PostDetailView(generic.DetailView):
+    template_name = 'blog/post_detail.html'
+    model = Post
+
+class PostUpdateView(generic.UpdateView):
+    template_name = 'blog/post_form.html'
+    model = Post
+    form_class = PostCreateForm
+    success_url = reverse_lazy('blog:post_detail')
+
+class PostDeleteView(generic.DeleteView):
+    model = Post
     success_url = reverse_lazy('blog:post_list')
